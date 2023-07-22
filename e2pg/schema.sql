@@ -60,6 +60,28 @@ CREATE TABLE public.nft_transfers (
 );
 
 
+CREATE TABLE public.erc4337_userops (
+    contract bytea,
+    userOpHash bytea,
+    userOpSender bytea,
+    userOpPaymaster bytea,
+    userOpNonce numeric,
+    userOpSuccess boolean,
+    userOpActualGasCost numeric,
+    userOpActualGasUsed numeric,
+
+    tx_sender bytea,
+    eth numeric,
+    task_id numeric,
+    chain_id numeric,
+    block_hash bytea,
+    block_number numeric,
+    transaction_hash bytea,
+    transaction_index numeric,
+    log_index numeric
+);
+
+
 
 CREATE TABLE public.task (
     id smallint NOT NULL,
