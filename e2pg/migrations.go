@@ -68,4 +68,14 @@ var Migrations = map[int]pgmig.Migration{
 		);
 		`,
 	},
+	2: pgmig.Migration{
+		SQL: `
+			alter table erc4337_userops
+				add primary key (transaction_hash, log_index);
+			alter table erc20_transfers
+				add primary key (transaction_hash, log_index);
+			alter table nft_transfers
+				add primary key (transaction_hash, log_index);
+		`,
+	},
 }

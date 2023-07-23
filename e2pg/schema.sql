@@ -35,9 +35,9 @@ CREATE TABLE public.erc20_transfers (
     chain_id numeric,
     block_hash bytea,
     block_number numeric,
-    transaction_hash bytea,
+    transaction_hash bytea NOT NULL,
     transaction_index numeric,
-    log_index numeric
+    log_index numeric NOT NULL
 );
 
 
@@ -57,9 +57,9 @@ CREATE TABLE public.erc4337_userops (
     chain_id numeric,
     block_hash bytea,
     block_number numeric,
-    transaction_hash bytea,
+    transaction_hash bytea NOT NULL,
     transaction_index numeric,
-    log_index numeric
+    log_index numeric NOT NULL
 );
 
 
@@ -76,9 +76,9 @@ CREATE TABLE public.nft_transfers (
     chain_id numeric,
     block_hash bytea,
     block_number numeric,
-    transaction_hash bytea,
+    transaction_hash bytea NOT NULL,
     transaction_index numeric,
-    log_index numeric
+    log_index numeric NOT NULL
 );
 
 
@@ -94,6 +94,21 @@ CREATE TABLE public.task (
 
 ALTER TABLE ONLY public.e2pg_migrations
     ADD CONSTRAINT e2pg_migrations_pkey PRIMARY KEY (idx, hash);
+
+
+
+ALTER TABLE ONLY public.erc20_transfers
+    ADD CONSTRAINT erc20_transfers_pkey PRIMARY KEY (transaction_hash, log_index);
+
+
+
+ALTER TABLE ONLY public.erc4337_userops
+    ADD CONSTRAINT erc4337_userops_pkey PRIMARY KEY (transaction_hash, log_index);
+
+
+
+ALTER TABLE ONLY public.nft_transfers
+    ADD CONSTRAINT nft_transfers_pkey PRIMARY KEY (transaction_hash, log_index);
 
 
 
